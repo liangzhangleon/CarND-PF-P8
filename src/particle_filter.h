@@ -23,20 +23,20 @@ struct Particle {
 	std::vector<double> sense_y;
 };
 
-
-
 class ParticleFilter {
+
+private:
 	
 	// Number of particles to draw
 	int num_particles; 
-	
-	
-	
 	// Flag, if filter is initialized
 	bool is_initialized;
-	
 	// Vector of weights of all particles
 	std::vector<double> weights;
+
+	void getMapROI(double sensor_range, Particle p, const Map &map_landmarks, std::vector<LandmarkObs>& map_ROI);
+	// Vehicle frame to map frame
+	void vehicle2map(Particle p, const std::vector<LandmarkObs> &observations, std::vector<LandmarkObs> &map_obervations);
 	
 public:
 	
